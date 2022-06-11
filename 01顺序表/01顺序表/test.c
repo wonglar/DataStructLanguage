@@ -5,11 +5,13 @@ void TestSqList1()
 {
 	SqList sl;
 	SqListInit(&sl);
-	SqListPopBack(&sl, 1);
-	SqListPopBack(&sl, 2);
-	SqListPopBack(&sl, 3);
-	SqListPopBack(&sl, 4);
-	SqListPopBack(&sl, 5);
+	SqListPushBack(&sl, 1);
+	SqListPushBack(&sl, 2);
+	SqListPushBack(&sl, 3);
+	SqListPushBack(&sl, 4);
+	SqListPushBack(&sl, 5);
+
+	SqListPrint(&sl);
 }
 
 

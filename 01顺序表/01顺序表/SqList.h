@@ -39,8 +39,9 @@ typedef struct SqList
 }SqList;
 
 
-void SqListInit(SqList* ps);
+void SqListPrint(SqList* ps);
 
+void SqListInit(SqList* ps);
 void SqListPushBack(SqList* ps, ElemType e);
 void SqListPopBack(SqList* ps);
 void SqListPushFront(SqList* ps, ElemType e);

@@ -2,6 +2,17 @@
 
 #include "SqList.h"
 
+void SqListPrint(SqList* ps)
+{
+	int i = 0;
+	for (i = 0; i < ps->length; i++)
+	{
+		printf("%d ", ps->elem[i]);
+	}
+	printf("\n");
+}
+
+
 void SqListInit(SqList* ps)
 {
 	ps->elem = NULL;
@@ -12,8 +23,22 @@ void SqListInit(SqList* ps)
 
 void SqListPushBack(SqList* ps, ElemType e)
 {
+	// 如果没有空间，或者空间不足，进行扩容
 	if (ps->length == ps->capacity)
 	{
+		int newcapacity = ps->capacity == 0 ? 4 : ps->capacity*2;
+		ElemType* tmp = (ElemType*)realloc(ps->elem ,newcapacity * sizeof(ElemType));
+
+		// 空间开辟失败
+		if (tmp == NULL)
+		{
+			printf("realloc fail\n");
+			exit(-1);
+		}
+
+		// 空间开辟成功
+		ps->elem = tmp;
+		ps->capacity = newcapacity;
 
 	}
 
