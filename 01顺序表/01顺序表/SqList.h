@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 /*
 
@@ -26,8 +27,7 @@ void SqListPopFront(SqList* list);
 
 */
 
-
-#define MAX_SIZE 50
+#define MAX_SIZE 4
 typedef int ElemType;
 
 // ¶¯Ì¬Ë³Ðò±í
@@ -42,7 +42,9 @@ typedef struct SqList
 void SqListPrint(SqList* ps);
 
 void SqListInit(SqList* ps);
-void SqListPushBack(SqList* ps, ElemType e);
+void SqListDestory(SqList* ps);
 void SqListPopBack(SqList* ps);
+void SqListPushBack(SqList* ps, ElemType e);
+
 void SqListPushFront(SqList* ps, ElemType e);
 void SqListPopFront(SqList* ps);
