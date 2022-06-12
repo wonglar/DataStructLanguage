@@ -43,8 +43,16 @@ void SqListPrint(SqList* ps);
 
 void SqListInit(SqList* ps);
 void SqListDestory(SqList* ps);
+void SqListCheckCapacity(SqList* ps);
+
 void SqListPopBack(SqList* ps);
 void SqListPushBack(SqList* ps, ElemType e);
-
 void SqListPushFront(SqList* ps, ElemType e);
 void SqListPopFront(SqList* ps);
+
+// 找到了返回e位置下标，没有找到返回-1
+int SqListFind(SqList* ps, ElemType e);
+// 指定的位置插入
+void SqListInsert(SqList* ps, int pos, ElemType e);
+// 删除pos位置的数据
+void SqListErase(SqList* ps, int pos);

@@ -2,6 +2,29 @@
 
 #include "SqList.h"
 
+// 扩容
+void SqListCheckCapacity(SqList* ps)
+{
+	// 如果没有空间，或者空间不足，进行扩容
+	if (ps->length == ps->capacity)
+	{
+		int newcapacity = ps->capacity == 0 ? MAX_SIZE : ps->capacity * 2;
+		ElemType* tmp = (ElemType*)realloc(ps->elem, newcapacity * sizeof(ElemType));
+
+		// 空间开辟失败
+		if (tmp == NULL)
+		{
+			printf("realloc fail\n");
+			exit(-1);
+		}
+
+		// 空间开辟成功
+		ps->elem = tmp;
+		ps->capacity = newcapacity;
+
+	}
+}
+
 // 打印顺序表
 void SqListPrint(SqList* ps)
 {
@@ -21,41 +44,25 @@ void SqListInit(SqList* ps)
 	ps->capacity = 0;
 }
 
-// 尾部插入
-void SqListPushBack(SqList* ps, ElemType e)
-{
-	// 如果没有空间，或者空间不足，进行扩容
-	if (ps->length == ps->capacity)
-	{
-		int newcapacity = ps->capacity == 0 ? MAX_SIZE : ps->capacity * 2;
-		ElemType* tmp = (ElemType*)realloc(ps->elem ,newcapacity * sizeof(ElemType));
-
-		// 空间开辟失败
-		if (tmp == NULL)
-		{
-			printf("realloc fail\n");
-			exit(-1);
-		}
-
-		// 空间开辟成功
-		ps->elem = tmp;
-		ps->capacity = newcapacity;
-
-	}
-
-	// 空间足够，直接尾部插入
-	ps->elem[ps->length] = e;
-	ps->length++;
-
-
-}
-
 // 销毁顺序表
 void SqListDestory(SqList* ps)
 {
 	free(ps->elem);
 	ps->elem = NULL;
 	ps->capacity = ps->length = 0;
+}
+
+// 尾部插入
+void SqListPushBack(SqList* ps, ElemType e)
+{
+	//// 如果没有空间，或者空间不足，进行扩容
+	//SqListCheckCapacity(ps);
+	//
+	//// 空间足够，直接尾部插入
+	//ps->elem[ps->length] = e;
+	//ps->length++;
+
+	SqListInsert(ps, ps->length + 1, e);
 }
 
 // 尾部删除
@@ -79,16 +86,82 @@ void SqListPopBack(SqList* ps)
 // 头部插入
 void SqListPushFront(SqList* ps, ElemType e)
 {
-	// 挪动数据
-	int end = ps->length - 1;
-	while (end >= 0)
-	{
-		ps->elem[end + 1] = ps->elem[end];
-		end--;
-	}
+	//// 如果没有空间，或者空间不足，进行扩容
+	//SqListCheckCapacity(ps);
 
-	ps->elem[0] = e;
-	ps->length++;
+	//// 挪动数据
+	//int end = ps->length - 1;
+	//while (end >= 0)
+	//{
+	//	ps->elem[end + 1] = ps->elem[end];
+	//	end--;
+	//}
+
+	//ps->elem[0] = e;
+	//ps->length++;
+
+	SqListInsert(ps, 1, e);
+
 }
 
-void SqListPopFront(SqList* ps);
+// 头部删除
+void SqListPopFront(SqList* ps)
+{
+	// 有数据才删
+	assert(ps->length > 0);
+
+	// 挪动数据
+	int begin = 1;
+	while (begin < ps->length)
+	{
+		ps->elem[begin - 1] = ps->elem[begin];
+		begin++;
+	}
+	
+	ps->length--;
+
+}
+
+
+// 找到了返回e位置下标，没有找到返回-1
+int SqListFind(SqList* ps, ElemType e)
+{
+	int i = 0;
+	for (i = 0; i < ps->length; i++)
+	{
+		if (ps->elem[i] == e)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+// 指定的位置插入
+void SqListInsert(SqList* ps, int pos, ElemType e)
+{
+	// 温柔的处理方式
+	//if (pos > ps->length + 1 || pos < 1)  // 注意：pos为位序，不是下标
+	//{
+	//	printf("pos invalid\n");   
+	//	return;
+	//}
+
+	// 粗暴的处理方式
+	assert(pos >= 1 && pos <= ps->length + 1);
+
+	// 空间不足，进行增容
+	SqListCheckCapacity(ps);
+
+	// 挪动数据
+	int i = 0;
+	for (i = ps->length - 1; i >= pos - 1; i--)
+	{
+		ps->elem[i + 1] = ps->elem[i];
+	}
+	
+	ps->elem[pos - 1] = e;
+	ps->length++;
+
+}
