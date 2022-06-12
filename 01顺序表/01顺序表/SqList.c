@@ -77,9 +77,13 @@ void SqListPopBack(SqList* ps)
 	//	ps->length--;
 	//}
 
-	// 方式二：暴力处理方式
-	assert(ps->length > 0);
-	ps->length--;
+	//// 方式二：暴力处理方式
+	//assert(ps->length > 0);
+	//ps->length--;
+
+
+	// 尾删复用
+	SqListErase(ps, ps->length);
 
 }
 
@@ -107,18 +111,21 @@ void SqListPushFront(SqList* ps, ElemType e)
 // 头部删除
 void SqListPopFront(SqList* ps)
 {
-	// 有数据才删
-	assert(ps->length > 0);
+	//// 有数据才删
+	//assert(ps->length > 0);
 
-	// 挪动数据
-	int begin = 1;
-	while (begin < ps->length)
-	{
-		ps->elem[begin - 1] = ps->elem[begin];
-		begin++;
-	}
-	
-	ps->length--;
+	//// 挪动数据
+	//int begin = 1;
+	//while (begin < ps->length)
+	//{
+	//	ps->elem[begin - 1] = ps->elem[begin];
+	//	begin++;
+	//}
+	//
+	//ps->length--;
+
+	// 头删复用
+	SqListErase(ps, 1);
 
 }
 
@@ -163,5 +170,22 @@ void SqListInsert(SqList* ps, int pos, ElemType e)
 	
 	ps->elem[pos - 1] = e;
 	ps->length++;
+
+}
+
+// 删除pos位置的数据 注意此处pos也是位序，不是数组的下标
+void SqListErase(SqList* ps, int pos)
+{
+	// 处理删除的位置不合法
+	assert(pos >= 1 && pos <= ps->length);
+
+
+	while (pos < ps->length)
+	{
+		ps->elem[pos - 1] = ps->elem[pos];
+		pos++;
+	}
+
+	ps->length--;
 
 }

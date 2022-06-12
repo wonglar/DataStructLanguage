@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "SqList.h"
 
-// 测试1
+// 测试尾插和尾删
 void TestSqList1()
 {
 	SqList sl;
@@ -25,7 +25,7 @@ void TestSqList1()
 	SqListDestory(&sl);
 }
 
-// 测试2
+// 测试头插和头删
 void TestSqList2()
 {
 	SqList sl;
@@ -52,7 +52,7 @@ void TestSqList2()
 	SqListDestory(&sl);
 }
 
-// 测试3
+// 测试SqListFind
 void TestSqList3()
 {
 	SqList sl;
@@ -79,7 +79,7 @@ void TestSqList3()
 }
 
 
-// 测试4
+// 测试在指定位置插入
 void TestSqList4()
 {
 	SqList sl;
@@ -112,16 +112,50 @@ void TestSqList4()
 	SqListDestory(&sl);
 }
 
+
+// 测试删除pos位置的数据
+void TestSqList5()
+{
+	SqList sl;
+	SqListInit(&sl);
+	SqListPushBack(&sl, 1);
+	SqListPushBack(&sl, 2);
+	SqListPushBack(&sl, 3);
+	SqListPushBack(&sl, 4);
+	SqListPushBack(&sl, 5);
+	SqListPushBack(&sl, 6);
+	SqListPrint(&sl);
+	
+	// 删除第一个位置的元素
+	SqListErase(&sl, 1);
+	SqListPrint(&sl);
+
+	// 删除顺序表中的5
+	int index = SqListFind(&sl, 5);
+	if (index != -1)
+	{
+		SqListErase(&sl, index + 1);
+	}
+	SqListPrint(&sl);
+
+
+	SqListDestory(&sl);
+}
+
+
 int main()
 {
 
-	 TestSqList1();
+	 //TestSqList1();
 
 	 //TestSqList2();
 
 	//TestSqList3();
 
-	// TestSqList4();
+	 //TestSqList4();
+
+	TestSqList5();
+
 
 	return 0;
 }

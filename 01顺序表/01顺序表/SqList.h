@@ -38,16 +38,21 @@ typedef struct SqList
 	int capacity; // 数组实际的容量
 }SqList;
 
-
+// 打印顺序表
 void SqListPrint(SqList* ps);
-
+// 初始化顺序表
 void SqListInit(SqList* ps);
+// 销毁顺序表
 void SqListDestory(SqList* ps);
+// 扩容
 void SqListCheckCapacity(SqList* ps);
-
+// 尾部删除
 void SqListPopBack(SqList* ps);
+// 尾部插入
 void SqListPushBack(SqList* ps, ElemType e);
+// 头部插入
 void SqListPushFront(SqList* ps, ElemType e);
+// 头部删除
 void SqListPopFront(SqList* ps);
 
 // 找到了返回e位置下标，没有找到返回-1
