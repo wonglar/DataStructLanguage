@@ -189,3 +189,32 @@ void SqListErase(SqList* ps, int pos)
 	ps->length--;
 
 }
+
+
+// 得到顺序表的长度
+int GetLength(SqList* ps)
+{
+	return ps->length;
+}
+
+// 判断顺序表是否为空，为空返回1，非空返回0
+int isEmpty(SqList* ps)
+{
+	return ps->length ? 0 : 1;
+}
+
+// 顺序表取值（根据位置pos，获取相应位置数据元素的内容） 注意：pos是位序，不是数组的索引
+int GetElem(SqList* ps, int pos, ElemType* e)
+{
+	// 位置不合法
+	if (pos < 1 || pos > ps->length)
+	{
+		return 0;
+	}
+
+	*e = ps->elem[pos - 1];
+
+	return 1;
+
+	
+}

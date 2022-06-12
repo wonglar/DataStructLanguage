@@ -125,6 +125,10 @@ void TestSqList5()
 	SqListPushBack(&sl, 5);
 	SqListPushBack(&sl, 6);
 	SqListPrint(&sl);
+
+	// 顺序表的当前长度
+	int len = GetLength(&sl);
+	printf("len = %d\n", len);
 	
 	// 删除第一个位置的元素
 	SqListErase(&sl, 1);
@@ -138,10 +142,43 @@ void TestSqList5()
 	}
 	SqListPrint(&sl);
 
+	// 顺序表的当前长度
+	len = GetLength(&sl);
+	printf("len = %d\n", len);
+
+	// 顺序表是否为空
+	int ret = isEmpty(&sl);
+	printf("顺序表是否为空：%d\n", ret);
 
 	SqListDestory(&sl);
 }
 
+
+// 测试获取指定位置元素
+void TestSqList6()
+{
+	SqList sl;
+	SqListInit(&sl);
+	SqListPushBack(&sl, 1);
+	SqListPushBack(&sl, 2);
+	SqListPushBack(&sl, 3);
+	SqListPushBack(&sl, 4);
+	SqListPushBack(&sl, 5);
+	SqListPrint(&sl);
+
+	ElemType e;
+	int ret = GetElem(&sl, 4, &e);
+	if (ret == 0)
+	{
+		printf("要获取元素的位置不合法！\n");
+	}
+	else
+	{
+		printf("%d\n", e);
+	}
+
+	SqListDestory(&sl);
+}
 
 int main()
 {
@@ -154,8 +191,9 @@ int main()
 
 	 //TestSqList4();
 
-	TestSqList5();
+	// TestSqList5();
 
+	 TestSqList6();
 
 	return 0;
 }

@@ -46,10 +46,18 @@ void SqListInit(SqList* ps);
 void SqListDestory(SqList* ps);
 // 扩容
 void SqListCheckCapacity(SqList* ps);
-// 尾部删除
-void SqListPopBack(SqList* ps);
+// 得到顺序表的长度
+int GetLength(SqList* ps);
+// 判断顺序表是否为空，为空返回1，非空返回0
+int isEmpty(SqList* ps);
+// 顺序表取值（根据位置pos，获取相应位置数据元素的内容） 注意：pos是位序，不是数组的索引
+int GetElem(SqList* ps, int pos, ElemType* e);
+
+
 // 尾部插入
 void SqListPushBack(SqList* ps, ElemType e);
+// 尾部删除
+void SqListPopBack(SqList* ps);
 // 头部插入
 void SqListPushFront(SqList* ps, ElemType e);
 // 头部删除
