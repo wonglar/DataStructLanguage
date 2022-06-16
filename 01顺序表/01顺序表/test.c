@@ -180,7 +180,7 @@ void TestSqList6()
 	SqListDestory(&sl);
 }
 
-<<<<<<< HEAD
+
 //int main()
 //{
 //
@@ -191,22 +191,21 @@ void TestSqList6()
 //
 //	return 0;
 //}
-=======
-int main()
-{
 
-	 //TestSqList1();
-
-	 //TestSqList2();
-
-	//TestSqList3();
-
-	 //TestSqList4();
-
-	// TestSqList5();
-
-	 TestSqList6();
-
-	return 0;
-}
->>>>>>> bf6665f76d16b493641247f5b581db8c505de889
+//int main()
+//{
+//
+//	 //TestSqList1();
+//
+//	 //TestSqList2();
+//
+//	//TestSqList3();
+//
+//	 //TestSqList4();
+//
+//	// TestSqList5();
+//
+//	 TestSqList6();
+//
+//	return 0;
+//}
