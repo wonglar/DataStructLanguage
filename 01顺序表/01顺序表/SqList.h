@@ -38,13 +38,34 @@ typedef struct SqList
 	int capacity; // 数组实际的容量
 }SqList;
 
-
+// 打印顺序表
 void SqListPrint(SqList* ps);
-
+// 初始化顺序表
 void SqListInit(SqList* ps);
+// 销毁顺序表
 void SqListDestory(SqList* ps);
-void SqListPopBack(SqList* ps);
-void SqListPushBack(SqList* ps, ElemType e);
+// 扩容
+void SqListCheckCapacity(SqList* ps);
+// 得到顺序表的长度
+int GetLength(SqList* ps);
+// 判断顺序表是否为空，为空返回1，非空返回0
+int isEmpty(SqList* ps);
+// 顺序表取值（根据位置pos，获取相应位置数据元素的内容） 注意：pos是位序，不是数组的索引
+int GetElem(SqList* ps, int pos, ElemType* e);
 
+
+// 尾部插入
+void SqListPushBack(SqList* ps, ElemType e);
+// 尾部删除
+void SqListPopBack(SqList* ps);
+// 头部插入
 void SqListPushFront(SqList* ps, ElemType e);
+// 头部删除
 void SqListPopFront(SqList* ps);
+
+// 找到了返回e位置下标，没有找到返回-1
+int SqListFind(SqList* ps, ElemType e);
+// 指定的位置插入
+void SqListInsert(SqList* ps, int pos, ElemType e);
+// 删除pos位置的数据
+void SqListErase(SqList* ps, int pos);
