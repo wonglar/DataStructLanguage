@@ -47,13 +47,13 @@ void TestSqList2()
 	SqListDestory(&sl);
 }
 
-int main()
-{
-
-	// TestSqList1();
-
-	TestSqList2();
-
-
-	return 0;
-}
+//int main()
+//{
+//
+//	// TestSqList1();
+//
+//	TestSqList2();
+//
+//
+//	return 0;
+//}
