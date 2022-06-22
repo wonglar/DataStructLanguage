@@ -2,6 +2,22 @@
 
 #include "SList.h"
 
+// 创建一个节点
+SLTNode* CreateListNode(ElementType e)
+{
+
+	SLTNode* newnode = (SLTNode*)malloc(sizeof(SLTNode));
+
+	if (newnode == NULL)
+	{
+		exit(-1);
+	}
+
+	newnode->data = e;
+	newnode->next = NULL;
+
+	return newnode;
+}
 
 // 打印单链表
 void SListPrint(SLTNode* phead)
@@ -13,14 +29,14 @@ void SListPrint(SLTNode* phead)
 		cur = cur->next;
 	}
 
+	printf("NULL\n");
+
 }
 
 // 尾部插入
 void SListPushBack(SLTNode** phead, ElementType e)
 {
-	SLTNode* newnode = (SLTNode*)malloc(sizeof(SLTNode));
-	newnode->data = e;
-	newnode->next = NULL;
+	SLTNode* newnode = CreateListNode(e);
 
 	if (*phead == NULL)
 	{
@@ -37,4 +53,13 @@ void SListPushBack(SLTNode** phead, ElementType e)
 	}
 
 
+}
+
+// 头部插入
+void SListPushFront(SLTNode** pphead, ElementType e)
+{
+	SLTNode* newnode = CreateListNode(e);
+
+	newnode->next = *pphead;
+	*pphead = newnode;
 }

@@ -15,3 +15,7 @@ void SListPrint(SLTNode* phead);
 
 // 尾部插入
 void SListPushBack(SLTNode** phead, ElementType e);
+
+
+// 头部插入
+void SListPushFront(SLTNode** pphead, ElementType e);
