@@ -63,3 +63,91 @@ void SListPushFront(SLTNode** pphead, ElementType e)
 	newnode->next = *pphead;
 	*pphead = newnode;
 }
+
+// 尾部删除一
+//void SListPopBack(SLTNode** pphead)
+//{
+//	SLTNode* tail = *pphead;
+//	SLTNode* prev = NULL;
+//
+//	// 链表为空时
+//	assert(*pphead != NULL);
+//	// 只有一个节点时
+//	if ((*pphead)->next == NULL)
+//	{
+//		free(*pphead);
+//		*pphead = NULL;
+//	}
+//	else
+//	{
+//		while (tail->next != NULL)
+//		{
+//			prev = tail;
+//			tail = tail->next;
+//		}
+//
+//		free(tail);
+//		tail = NULL;
+//		prev->next = NULL;
+//
+//	}
+//
+//}
+
+
+// 尾部删除二
+void SListPopBack(SLTNode** pphead)
+{
+	SLTNode* tail = *pphead;
+
+	// 链表为空时
+	assert(*pphead != NULL);
+
+	// 只有一个节点
+	if ((*pphead)->next == NULL)
+	{
+		free(*pphead);
+		*pphead = NULL;
+	}
+	// 两个或两个以上节点
+	else
+	{
+		while (tail->next->next != NULL)
+		{
+			tail = tail->next;
+		}
+		free(tail->next);
+		tail->next = NULL;
+	}
+
+}
+
+
+// 头部删除
+void SListPopFront(SLTNode** pphead)
+{
+	// 链表为空时
+	assert(*pphead != NULL);
+
+	SLTNode* next = (*pphead)->next;
+	free(*pphead);
+	*pphead = next;
+}
+
+SLTNode* SListFind(SLTNode* phead, ElementType e)
+{
+	SLTNode* cur = phead;
+	while (cur)
+	{
+		if (cur->data == e)
+		{
+			return cur;
+		}
+		else
+		{
+			cur = cur->next;
+		}
+	}
+
+	return NULL;
+}
