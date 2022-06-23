@@ -65,6 +65,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Demo.c" />
     <ClCompile Include="SList.c" />
     <ClCompile Include="Test.c" />
   </ItemGroup>

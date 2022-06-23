@@ -104,6 +104,7 @@ void TestSList5()
 		pos = SListFind(pos->next, 2);
 	}
 
+	// SListFind还可以做修改
 	// 修改3为30
 	pos = SListFind(plist, 3);
 	if (pos)
@@ -123,9 +124,21 @@ void TestSList6()
 	SListPushBack(&plist, 1);
 	SListPushBack(&plist, 2);
 	SListPushBack(&plist, 3);
-	SListPushBack(&plist, 2);
 	SListPushBack(&plist, 4);
 
+	SLTNode* pos = SListFind(plist, 3);
+	if (pos)
+	{
+		SListInsert(&plist, pos, 30);
+	}
+
+	SListPrint(plist);
+
+	pos = SListFind(plist, 1);
+	if (pos)
+	{
+		SListInsert(&plist, pos, 10);
+	}
 
 	SListPrint(plist);
 }

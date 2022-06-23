@@ -134,6 +134,7 @@ void SListPopFront(SLTNode** pphead)
 	*pphead = next;
 }
 
+
 SLTNode* SListFind(SLTNode* phead, ElementType e)
 {
 	SLTNode* cur = phead;
@@ -150,4 +151,30 @@ SLTNode* SListFind(SLTNode* phead, ElementType e)
 	}
 
 	return NULL;
+}
+
+// 在pos位置之前去插入一个节点(单链表不适合在pos的前面插入)
+void SListInsert(SLTNode** pphead, SLTNode* pos, ElementType e)
+{
+	SLTNode* newnode = CreateListNode(e);
+
+	if (*pphead == pos)
+	{
+		newnode->next = *pphead;
+		*pphead = newnode;
+	}
+	else
+	{
+		// 找到pos的前一个位置
+		SLTNode* posPrev = *pphead;
+		while (posPrev->next != pos)
+		{
+			posPrev = posPrev->next;
+		}
+
+		posPrev->next = newnode;
+		newnode->next = pos;
+	}
+
+	
 }
