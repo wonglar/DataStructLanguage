@@ -143,18 +143,18 @@ void TestSList6()
 	SListPrint(plist);
 }
 
-//int main()
-//{
-//	//TestSList1();
-//	//TestSList2();
-//
-//	//TestSList3();
-//
-//	//TestSList4();
-//
-//	//TestSList5();
-//
-//	TestSList6();
-//
-//	return 0;
-//}
+int main()
+{
+	//TestSList1();
+	//TestSList2();
+
+	//TestSList3();
+
+	//TestSList4();
+
+	//TestSList5();
+
+	TestSList6();
+
+	return 0;
+}
