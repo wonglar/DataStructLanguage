@@ -128,7 +128,7 @@ void SListPopFront(SLTNode** pphead)
 {
 	// 链表为空时
 	assert(*pphead != NULL);
-
+	
 	SLTNode* next = (*pphead)->next;
 	free(*pphead);
 	*pphead = next;
@@ -178,3 +178,49 @@ void SListInsert(SLTNode** pphead, SLTNode* pos, ElementType e)
 
 	
 }
+
+
+// 在pos位置之后去插入一个节点
+void SListInsertAfter(SLTNode* pos, ElementType e)
+{
+
+	SLTNode* newnode = CreateListNode(e);
+	newnode->next = pos->next;
+	pos->next = newnode;
+
+}
+
+
+void SListErase(SLTNode** pphead, SLTNode* pos)
+{
+	if (*pphead == pos)
+	{
+		/**pphead = pos->next;
+		free(pos);*/
+
+		SListPopFront(pphead);
+	}
+	else
+	{
+		SLTNode* prev = *pphead;
+		while (prev->next != pos)
+		{
+			prev = prev->next;
+		}
+		prev->next = pos->next;
+		free(pos);
+		pos = NULL; 
+	}
+}
+
+
+void SListEraseAfter(SLTNode* pos)
+{
+	assert(pos->next);
+
+	SLTNode* next = pos->next;
+	pos->next = next->next;
+	free(next);
+	next = NULL;
+}
+

@@ -34,9 +34,12 @@ SLTNode* SListFind(SLTNode* phead, ElementType e);
 // 在pos位置之前去插入一个节点
 void SListInsert(SLTNode** pphead, SLTNode* pos, ElementType e);
 
+// 在pos位置之后去插入一个节点
+void SListInsertAfter(SLTNode* pos, ElementType e);
+
 void SListErase(SLTNode** pphead, SLTNode* pos);
+
+void SListEraseAfter(SLTNode* pos);
 
 void SListDestroy(SLTNode** pphead);
 
-// 在pos位置之后去插入一个节点
-void SListInsertAfter(SLTNode* pos, ElementType e);
