@@ -6,7 +6,7 @@ void StackInit(Stack *ps)
 {
 	assert(ps);
 	ps->a = NULL;
-	ps->top = 0;	// 也可以给-1；初始给0意味着指向的是栈顶元素的下一个
+	ps->top = 0;	// 也可以给-1；初始给0意味着指向的是栈顶元素的下一�?
 	ps->capacity = 0;
 }
 
@@ -47,7 +47,6 @@ void StackPop(Stack *ps)
 	ps->top--;
 }
 
-// 取栈顶元素
 ElementType StackTop(Stack *ps)
 {
 	assert(ps);
