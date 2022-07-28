@@ -6,7 +6,7 @@ void StackInit(Stack *ps)
 {
 	assert(ps);
 	ps->a = NULL;
-	ps->top = 0;	// Ò²¿ÉÒÔ¸ø-1£»³õÊ¼¸ø0ÒâÎ¶×ÅÖ¸ÏòµÄÊÇÕ»¶¥ÔªËØµÄÏÂÒ»¸ö
+	ps->top = 0;	// ä¹Ÿå¯ä»¥ç»™-1ï¼›åˆå§‹ç»™0æ„å‘³ç€æŒ‡å‘çš„æ˜¯æ ˆé¡¶å…ƒç´ çš„ä¸‹ä¸€ä¸ª
 	ps->capacity = 0;
 }
 
@@ -47,6 +47,7 @@ void StackPop(Stack *ps)
 	ps->top--;
 }
 
+// å–æ ˆé¡¶å…ƒç´ 
 ElementType StackTop(Stack *ps)
 {
 	assert(ps);
